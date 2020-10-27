@@ -1,21 +1,18 @@
-FUNCTION function_name(parameters) : return_type
+PROCEDURE insertion_sort(VAR Tab : ARRAY_OF INTEGER)
 VAR
-  set_declarations
+  i,j,tmp,min,n : INTEGER;
 BEGIN
-  set_instructions
-  RETURN value ;
-END
-
-PROCEDURE procedure_name(parameters)
-VAR
-  set_declarations
-BEGIN
-  set_instructions
-END
-
-ALGORITHM algorithm_name
-VAR
-  set_declarations
-BEGIN
-  set_instructions
+  n:= Tab.length;
+  FOR i FROM 0 TO n-2 DO
+    min:=i;
+    FOR j FROM i+1 TO n-1 DO
+      IF (Tab[j]<Tab[min]) THEN
+        min:=j;
+        tmp:=Tab[min];
+        Tab[min]:=Tab[i];
+        Tab[i]:=tmp;
+        min:=i;
+      END_IF      
+    END_FOR
+  END_FOR
 END
