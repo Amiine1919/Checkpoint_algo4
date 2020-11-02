@@ -1,18 +1,14 @@
-PROCEDURE insertion_sort(VAR Tab : ARRAY_OF INTEGER)
+PROCEDURE insertion_sort(VAR arr : ARRAY_OF INTEGER)
 VAR
-  i,j,tmp,min,n : INTEGER;
+    i,j,current : INTEGER;
 BEGIN
-  n:= Tab.length;
-  FOR i FROM 0 TO n-2 DO
-    min:=i;
-    FOR j FROM i+1 TO n-1 DO
-      IF (Tab[j]<Tab[min]) THEN
-        min:=j;
-        tmp:=Tab[min];
-        Tab[min]:=Tab[i];
-        Tab[i]:=tmp;
-        min:=i;
-      END_IF      
+    FOR i FROM 1 TO arr.length-1 DO
+        current := arr [i];
+        j := i-1;
+        WHILE (j >= 0 AND arr[j] > current) DO
+            arr[j+1] := arr[j];
+            j := j-1;
+        END_WHILE
+        arr[j+1] = current;
     END_FOR
-  END_FOR
 END
